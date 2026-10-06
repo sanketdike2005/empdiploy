@@ -1,0 +1,61 @@
+Base URL: http://localhost:5000/api
+
+1) LOGIN
+POST /auth/login
+Body JSON:
+{
+  "email": "admin@example.com",
+  "password": "Admin@123"
+}
+
+2) CURRENT USER
+GET /auth/me
+Authorization: Bearer <token>
+
+3) REGISTER USER (ADMIN ONLY)
+POST /auth/register
+Authorization: Bearer <token>
+Body JSON:
+{
+  "name": "Manager One",
+  "email": "manager@example.com",
+  "password": "Manager@123",
+  "role": "manager"
+}
+
+4) LIST EMPLOYEES
+GET /employees?page=1&limit=10&search=
+Authorization: Bearer <token>
+
+5) EMPLOYEE BY ID
+GET /employees/1
+Authorization: Bearer <token>
+
+6) CREATE EMPLOYEE
+POST /employees
+Authorization: Bearer <token>
+Body: form-data
+employeeCode=EMP001
+firstName=Rahul
+lastName=Patil
+email=rahul@example.com
+phone=9876543210
+department=IT
+designation=Developer
+salary=35000
+joiningDate=2026-09-05
+status=active
+profileImage=<file optional>
+
+7) UPDATE EMPLOYEE
+PUT /employees/1
+Authorization: Bearer <token>
+Body: form-data
+
+8) DELETE EMPLOYEE (ADMIN ONLY)
+DELETE /employees/1
+Authorization: Bearer <token>
+
+9) DASHBOARD STATS
+GET /employees/stats
+Authorization: Bearer <token>
